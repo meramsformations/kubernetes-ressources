@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: apache
+  name: apache
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: apache
+  template:
+    metadata:
+      labels:
+        run: apache
+    spec:
+      containers:
+      - image: httpd:latest
+        name: apache
+        ports:
+        - containerPort: 80
+
